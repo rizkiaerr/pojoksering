@@ -8,14 +8,13 @@ if($_GET['save']=="buku_member"){
 mysqli_query($link,"UPDATE thread SET buku_judul='$buku_judul' WHERE buku_id='$buku_id'");
 header('location:threadbaru.php');
 }else{
-
+	$no_thread		 = $_POST['no_thread'];
 	$member_id		 = $_POST['member_id'];
 	$member_subjek 	 = $_POST['member_subjek'];
 	$member_pesan 	 = $_POST['member_pesan'];
 	$member_datetime = $_POST['member_datetime'];
 
-mysqli_query($link,"INSERT INTO thread(member_id, member_subjek, member_pesan, tanggal_upload) VALUES
-		     ('$member_id','$member_subjek','$member_pesan','$member_datetime')");
+mysqli_query($link,"INSERT INTO `thread`(`no_thread`, `member_id`, `member_subjek`, `member_pesan`, `tanggal_upload`) VALUES ('$no_thread','$member_id','$member_subjek','$member_pesan','$member_datetime')");
 
 header('location:threadbaru.php');
 }

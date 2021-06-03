@@ -29,7 +29,7 @@ $no = 0;
       <td><?php echo $no; ?></td>
       <td><?php echo  $r['member_nama']; ?></td>
       <td><?php echo  $r['member_subjek']; ?></td>
-      <td><?php echo  date('d F Y',strtotime($r['tanggal_upload'])); ?></td>
+      <td><?php echo  $r['tanggal_upload']; ?></td>
       <td>
         <a href="#" title="Edit" class='open_buku_admin btn btn-sm btn-default' id='<?php echo  $r['buku_id']; ?>' ><span class="glyphicon glyphicon-edit"></span></a>
         <a href="proses_delete_thread.php" class="btn btn-sm btn-default" onclick="confirm_buku_admin('proses_delete_thread.php?&buku_admin=<?php echo  $r['member_id']; ?>');"><span class="glyphicon glyphicon-trash"></span></a>
@@ -39,11 +39,17 @@ $no = 0;
 </tbody>
 <?php } ?>
 </table>
+<?php
+                if(!empty($_SESSION['member_email']))
+                {
+                ?>
                     <tr>
+
                                 <td colspan="5">
                                 <a href="tambahthread.php" input type="submit" name="tambahthread" value="Upload" class="btn btn-success">Tambah baru</a>
                                 </td>
-                            </tr> 
+                            </tr>
+                            <?php } ?> 
                         </tbody>
                         </table>
 </h1>
