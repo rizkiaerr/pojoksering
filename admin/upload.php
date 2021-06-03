@@ -48,12 +48,13 @@
                 //$data=mysqli_fetch_row($res);
                 if ($res = mysqli_query($link, $query)){
                   // Fetch one and one row
+                  $admin_buku_id = 1;
                   while ($row=mysqli_fetch_row($res))
                     {
                     //printf ("%s\n",$row[0]);
-                      $admin_buku_id = substr($row[0], strpos($row[0], "_") + 1);
-                      $admin_buku_id=(int)$admin_buku_id;
-                      $admin_buku_id++;
+                      	$admin_buku_id = substr($row[0], strpos($row[0], "_") + 1);
+                      	$admin_buku_id=(int)$admin_buku_id;
+                      	$admin_buku_id++;
                     }
                   // Free result set
                   //mysqli_free_result($result);
@@ -61,9 +62,9 @@
                 date_default_timezone_set('Asia/Jakarta');
                 $tanggal = date("Y-m-d");
                 //echo $tanggal;
-                //echo "$admin_buku_id";
+                // echo "$admin_buku_id";
               ?>
-             <input type="text" name="buku_id" value="<?php echo "$admin_buku_id"?>" readonly="readonly"> 
+             <input type="text" name="buku_id" value="<?php echo "A_$admin_buku_id"?>" readonly="readonly"> 
              <input type="test" name="buku_author" value="<?php echo "$admin_id"?>" readonly="readonly"> 
              <input type="text" name="tanggal_upload" value="<?php echo "$tanggal"?>" readonly="readonly">
               <div class="form-group">

@@ -26,6 +26,7 @@
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="../datatables/css/jquery.dataTables.css" rel="stylesheet" type="text/css" >
     
+    
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
     <script src="../js/jquery.min.js"></script>
@@ -155,16 +156,9 @@ function HandleBrowseClick(input_image)
 					<li class="dropdown">
 						<a data-toggle="dropdown" class="dropdown-toggle" href="#">Menu Utama <b class="caret"></b></a>
 						<ul role="menu" class="dropdown-menu">
-                            <li><a href="cari.php?txt_cari=Interaksi">Interaksi</a></li>
+                            <li><a href="threadbaru.php">Interaksi</a></li>
                             <li><a href="cari.php?txt_cari=Personality">Personality</a></li>
-                            <li><a href="cari.php?txt_cari=Umum">Umum</a></li>
-							<!-- <li><a href="cari.php?txt_cari=Agama">Agama</a></li>
-							<li><a href="cari.php?txt_cari=Animasi dan Desain">Animasi dan Desain</a></li>
-							<li><a href="cari.php?txt_cari=Bahasa dan Kamus">Bahasa dan Kamus</a></li>
-							<li class="divider"></li>
-							<li><a href="cari.php?txt_cari=Biografi">Biografi</a></li>
-							<li><a href="cari.php?txt_cari=Buku Sekolah">Buku Sekolah</a></li>
-                            <li><a href="#">Lainnya</a></li> -->
+                            <li><a href="index.php">Umum</a></li>
 						</ul>
 					</li>
 				</ul>
