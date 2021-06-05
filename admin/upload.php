@@ -133,7 +133,7 @@
       <?php echo $out; ?>
       <div class="col-sm-12">
              <input type="hidden" name="buku_author" value="<?php echo "$member_id"?>"> 
-             <input type="hidden" name="buku_kategori" value="29" > 
+             <input type="hidden" name="buku_kategori" value="09" > 
                <div class="form-group">
                 <label>File</label>
                   <input type="file" name="buku_file" class="form-control" required>

@@ -1,21 +1,13 @@
 <?php
 include "config.php";
-//save untuk Buku
-if($_GET['save']=="buku_member"){
-	$buku_id		 = $_POST['buku_id'];
-	$buku_judul 	 = $_POST['buku_judul'];
-
-mysqli_query($link,"UPDATE thread SET buku_judul='$buku_judul' WHERE buku_id='$buku_id'");
-header('location:threadbaru.php');
-}else{
+//save untuk thread
 	$no_thread		 = $_POST['no_thread'];
-	$member_id		 = $_POST['member_id'];
-	$member_subjek 	 = $_POST['member_subjek'];
-	$member_pesan 	 = $_POST['member_pesan'];
-	$member_datetime = $_POST['member_datetime'];
+	$thread_id		 = $_POST['thread_id'];
+	$thread_subjek 	 = $_POST['thread_subjek'];
+	$thread_pesan 	 = $_POST['thread_pesan'];
+	$thread_datetime = $_POST['thread_datetime'];
 
-mysqli_query($link,"INSERT INTO `thread`(`no_thread`, `member_id`, `member_subjek`, `member_pesan`, `tanggal_upload`) VALUES ('$no_thread','$member_id','$member_subjek','$member_pesan','$member_datetime')");
+	mysqli_query($link,"INSERT INTO `thread`(`no_thread`, `thread_id`, `thread_subjek`, `thread_pesan`, `tanggal_upload`) VALUES ('$no_thread','$thread_id','$thread_subjek','$thread_pesan','$thread_datetime')");
 
-header('location:threadbaru.php');
-}
+	header('location:threadbaru.php');
 ?>

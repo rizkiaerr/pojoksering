@@ -10,7 +10,7 @@ include "Cloudinary/Api.php";
              "api_secret" => "DpgQ8pMe2Q9upM6d0bYowtsvG4U" 
          )); 
 
-if ($_POST['buku_kategori']=="29"){
+if ($_POST['buku_kategori']=="09"){
 	$buku_author 	 = $_POST['buku_author'];
  	$buku_kategori 	 = $_POST['buku_kategori'];
 	$tmp			 = $_FILES['buku_file']['tmp_name'];

@@ -21,10 +21,7 @@
 			<br>
 			<hr>
 			<div class="navbar-form navbar-left">
-				<a href="#">
-					<img src="foto/admin/<?php echo "$foto"; ?>" class="img-circle" width="80" height="80">
-					<?php echo "$nama"; ?> 
-				</a>
+				
 			</div>
 			
 			<div class="navbar-form navbar-right">
@@ -40,21 +37,20 @@
 				Buku Terbaru 
 			</h2>
 			<?php
-				//$link = koneksi_db();
-				$query = "SELECT buku_id, buku_judul FROM buku_admin LIMIT 4";
-				$res = mysqli_query($link, $query);
-			?>
-			<?php
-				$no=0;
-				while($data_buku=mysqli_fetch_array($res))
-				{
-			?>
+								$query = "SELECT admin_nama, admin_foto, buku_id, buku_kategori, buku_judul FROM admin, buku_admin WHERE admin.admin_id=buku_admin.buku_author";
+								$res = mysqli_query($link, $query);
+
+								$no=0;
+								while($data=mysqli_fetch_array($res))
+								{
+									$no++;
+							?>
 			
 			<?php //\Cloudinary\Uploader::upload("C:\\xampp\\htdocs\\Master\\buku\\Olahraga\\book1.pdf", array("public_id" => "olahraga_book_1")); ?>
 			<center>
-			<a href="#"><?php echo cl_image_tag("$data_buku[buku_id].jpg", array("width" => 140, "height" => 180, "crop" => "fill", "page" => 1)); ?></a>
+			<a href="baca.php?kategori=<?php echo"$data[buku_kategori]" ?>&judul=<?php echo"$data[buku_judul]" ?>&nama=<?php echo"$data[admin_nama]" ?>&foto=<?php echo"$data[admin_foto]" ?> "><?php echo cl_image_tag("$data[buku_id].jpg", array("width" => 140, "height" => 180, "crop" => "fill", "page" => 1)); ?></a>
 			<br>
-			<a href="#" align="center"><b><?php echo"$data_buku[buku_judul]"; ?></b></a>
+		
 			</center>
 			<br>
 			<hr>

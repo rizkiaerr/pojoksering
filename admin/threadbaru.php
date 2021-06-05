@@ -21,14 +21,18 @@
 <?php 
 //menampilkan data mysqli
 $no = 0;
-  $sql=mysqli_query($link,"SELECT member.member_id,member.member_nama,thread.member_pesan,thread.member_subjek,thread.tanggal_upload FROM member JOIN thread WHERE member.member_id=thread.member_id");
+if(!empty($_SESSION['member_email'])){
+    $sql=mysqli_query($link,"SELECT member.member_id,member.member_nama,thread.thread_pesan,thread.thread_subjek,thread.tanggal_upload FROM member JOIN thread WHERE member.member_id=thread.thread_id");
+} elseif (!empty($_SESSION['admin_email'])) {
+    $sql=mysqli_query($link,"SELECT member.member_id,member.member_nama,thread.thread_pesan,thread.thread_subjek,thread.tanggal_upload FROM member JOIN thread WHERE member.member_id=thread.thread_id");
+}
   while($r=mysqli_fetch_array($sql)){
   $no++;
 ?>
   <tr>
       <td><?php echo $no; ?></td>
       <td><?php echo  $r['member_nama']; ?></td>
-      <td><?php echo  $r['member_subjek']; ?></td>
+      <td><?php echo  $r['thread_subjek']; ?></td>
       <td><?php echo  $r['tanggal_upload']; ?></td>
       <td>
         <a href="#" title="Edit" class='open_buku_admin btn btn-sm btn-default' id='<?php echo  $r['buku_id']; ?>' ><span class="glyphicon glyphicon-edit"></span></a>
@@ -40,7 +44,7 @@ $no = 0;
 <?php } ?>
 </table>
 <?php
-                if(!empty($_SESSION['member_email']))
+                if(!empty($_SESSION['member_email']) || (!empty($_SESSION['admin_email'])))
                 {
                 ?>
                     <tr>
