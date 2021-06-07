@@ -21,22 +21,20 @@
 <?php 
 //menampilkan data mysqli
 $no = 0;
-if(!empty($_SESSION['member_email'])){
-    $sql=mysqli_query($link,"SELECT member.member_id,member.member_nama,thread.thread_pesan,thread.thread_subjek,thread.tanggal_upload FROM member JOIN thread WHERE member.member_id=thread.thread_id");
-} elseif (!empty($_SESSION['admin_email'])) {
-    $sql=mysqli_query($link,"SELECT member.member_id,member.member_nama,thread.thread_pesan,thread.thread_subjek,thread.tanggal_upload FROM member JOIN thread WHERE member.member_id=thread.thread_id");
-}
+$sql=mysqli_query($link,"SELECT admin.admin_id AS thread_id,admin.admin_nama AS nama, thread.no_thread,thread.thread_pesan,thread.thread_subjek,thread.tanggal_upload FROM admin JOIN thread WHERE admin.admin_id=thread.thread_id UNION SELECT member.member_id AS thread_id,member.member_nama AS nama,thread.no_thread,thread.thread_pesan,thread.thread_subjek,thread.tanggal_upload FROM member JOIN thread WHERE member.member_id=thread.thread_id");
   while($r=mysqli_fetch_array($sql)){
   $no++;
+    $nomor_thread = $r['no_thread'];
 ?>
   <tr>
       <td><?php echo $no; ?></td>
-      <td><?php echo  $r['member_nama']; ?></td>
+      <td><?php echo  $r['nama']; ?></td>
       <td><?php echo  $r['thread_subjek']; ?></td>
       <td><?php echo  $r['tanggal_upload']; ?></td>
+      <td><?php echo  $r['thread_id']; ?></td>
       <td>
-        <a href="#" title="Edit" class='open_buku_admin btn btn-sm btn-default' id='<?php echo  $r['buku_id']; ?>' ><span class="glyphicon glyphicon-edit"></span></a>
-        <a href="proses_delete_thread.php" class="btn btn-sm btn-default" onclick="confirm_buku_admin('proses_delete_thread.php?&buku_admin=<?php echo  $r['member_id']; ?>');"><span class="glyphicon glyphicon-trash"></span></a>
+        <a href="edit_thread.php?thread_id=<?php echo  $nomor_thread;?>&id_thread=<?php echo $r['thread_id']?>&thread_subjek=<?php echo $r['thread_subjek']?>&thread_pesan=<?php echo $r['thread_pesan']?>" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-edit"></span></a>
+        <a href="proses_delete.php?thread_id=<?php echo  $r['no_thread'];?>" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-trash"></span></a>
         <a href="proses_edit_thread.php" class="btn btn-sm btn-default" onclick="confirm_buku_admin('proses_edit_thread.php?&buku_admin=<?php echo  $r['member_id']; ?>');"><span class="glyphicon glyphicon-eye-open"></span></a>
       </td>
   </tr>
@@ -50,7 +48,7 @@ if(!empty($_SESSION['member_email'])){
                     <tr>
 
                                 <td colspan="5">
-                                <a href="tambahthread.php" input type="submit" name="tambahthread" value="Upload" class="btn btn-success">Tambah baru</a>
+                                <a href="tambahthread.php?value=<?php echo $no+1; ?>" input type="submit" name="tambahthread" value="Upload" class="btn btn-success">Tambah baru</a>
                                 </td>
                             </tr>
                             <?php } ?> 

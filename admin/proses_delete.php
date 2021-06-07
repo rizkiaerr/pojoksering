@@ -15,5 +15,10 @@
 	$buku_id=$_GET['buku_member'];
 	$modal=mysqli_query($link,"DELETE FROM buku WHERE buku_id='$buku_id'");
 	header('location:buku.php');
+
+  }elseif(!empty($_GET['thread_id'])){
+	$thread_id=$_GET['thread_id'];
+	$modal=mysqli_query($link,"DELETE FROM thread WHERE no_thread='$thread_id'");
+	header('location:threadbaru.php');
   }
 ?>
